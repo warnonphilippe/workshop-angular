@@ -1,1 +1,84 @@
-<p>pays-list works!</p>
+
+
+
+
+<div class="ui-g">
+
+  <div class="ui-g-12 ui-fluid">
+    <button
+      (click)="askAdd($event)"
+      type="button"
+      class="ui-corner-all ui-button ui-button-text-only civa-bar-btn-right">
+                    <span class="ui-button-text ui-clickable">
+                        <i class="fas fa-plus"></i>&nbsp;Ajouter
+                    </span>
+    </button>
+  </div>
+
+  <div class="ui-g-12 ui-fluid">
+
+    <div class="civa-dataview-sortbar">
+      <i class="fas fa-sort-amount-down" *ngIf="ascendingSort"></i>
+      <i class="fas fa-sort-amount-up" *ngIf="!ascendingSort"></i>&nbsp;&nbsp;
+      <a href="javascript:void(0)" (click)="sort('codeIso2'); ascendingSort = !ascendingSort">
+        <i class="fas fa-caret-down" *ngIf="currentSort === 'codeIso2' && !ascendingSort"></i>
+        <i class="fas fa-caret-up" *ngIf="currentSort === 'codeIso2' && ascendingSort"></i>
+        Code Iso2
+      </a>,&nbsp;
+      <a href="javascript:void(0)" (click)="sort('codeIso3'); ascendingSort = !ascendingSort">
+        <i class="fas fa-caret-down" *ngIf="currentSort === 'codeIso3' && !ascendingSort"></i>
+        <i class="fas fa-caret-up" *ngIf="currentSort === 'codeIso3' && ascendingSort"></i>
+        Code Iso3
+      </a>
+    </div>
+
+    <!--
+        Explication des éléments du visuel .civa-dataview CSS pour le pDataView PrimeNG :
+
+        .civa-dataview-item     :   Représentation visuelle "CIVADIS" d'un bean dans pDataView PrimeNG, c'est l'élément racine
+        .civa-dataview-row      :   L'élément à afficher peut être représenté sur plusieurs lignes, grâce à la classe .civa-dataview-row
+        .civa-dataview-title    :   L'élément principal à afficher ce sont la ou les valeurs les plus représentatives
+        .civa-dataview-group    :   Regrouper des éléments de même famille dans des petites groupes, ils seront dans une bulle grisée
+        .civa-bg-{color}        :   Forcer le background d'un élément, très utile pour les civa-dataview-group
+        .civa-dataview-actions  :   La zone de droite, contenant boutons d'action relatifs à l'item
+    -->
+
+    <p-dataView [value]="datas" [paginator]="true" [rows]="10" paginatorPosition="bottom" class="civa-dataview">
+
+      <ng-template let-item pTemplate="listItem">
+
+        <div class="civa-dataview-item" (click)="askEdit($event, item)">
+
+          <div class="civa-dataview-picture">
+            <i class="fas fa-flag"></i>
+          </div>
+
+          <div class="civa-dataview-data">
+
+            <div class="civa-dataview-row">
+              <span class="civa-dataview-title">{{ item.codeIso2 | uppercase }}</span>
+              <span class="civa-dataview-group civa-bg-orange">Test {{ item.statut }}</span>
+            </div>
+
+            <div class="civa-dataview-row">
+              <span><i class="fas fa-id-card"></i>&nbsp;{{ item.codeIso3 }}</span>
+            </div>
+
+            <div class="civa-dataview-actions">
+              <ad-button-slide (click)="askEdit($event, item)" icon="fas fa-pencil-alt" label="Modifier" background="#3984b8" backgroundOver="#2d668f"></ad-button-slide>
+              <ad-button-slide (click)="askDelete($event, item)" icon="fas fa-trash-alt" label="Supprimer" background="#c3615f" backgroundOver="#ca4e4c"></ad-button-slide>
+            </div>
+
+          </div>
+
+        </div>
+
+      </ng-template>
+
+    </p-dataView>
+
+  </div>
+</div>
+
+
+

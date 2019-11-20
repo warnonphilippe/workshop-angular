@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {PageHeaderService} from '@civadis/primeng-layout';
 import {PaysService} from '../pays.service';
+import {Router} from '@angular/router';
+import {Pays} from '../../../shared/models/pays';
 
 @Component({
   selector: 'app-pays-list',
@@ -10,7 +12,13 @@ import {PaysService} from '../pays.service';
 })
 export class PaysListComponent implements OnInit {
 
-  constructor(public pageHeaderService: PageHeaderService, public paysService: PaysService) { }
+  constructor(public pageHeaderService: PageHeaderService,
+              public paysService: PaysService,
+              public router: Router) { }
+
+  datas: Pays[];
+  currentSort = '';
+  ascendingSort = true;
 
   ngOnInit() {
     this.pageHeaderService.notifyPageChange(
@@ -27,11 +35,41 @@ export class PaysListComponent implements OnInit {
   async refreshPays() {
     try {
       // await va attendre le résultat de l'Observable
-      const paysList = await this.paysService.findAll().toPromise();
-      console.log(paysList);
+      this.datas = await this.paysService.findAll().toPromise();
     } catch (ex) {
-
     }
   }
+
+  refreshPays2() {
+    this.paysService.findAll().subscribe(
+      res => {
+        this.datas = res;
+      }
+    );
+  }
+
+  sort(column: string) {
+    if (column !== this.currentSort) {
+      this.ascendingSort = true;
+    }
+    this.currentSort = column;
+    this.datas.sort( (el1, el2) =>
+      el1[column] === el2[column] ? 0 : ( el1[column] > el2[column] && this.ascendingSort ? 1 : -1 )
+    );
+  }
+
+  askEdit(event: MouseEvent, pays: Pays) {
+    this.router.navigate(['/pays-form']);
+  }
+
+  askAdd(event: MouseEvent) {
+    this.router.navigate(['/pays-form']);
+  }
+
+  askDelete(event: MouseEvent, pays: Pays) {
+    event.stopPropagation();
+    console.log('todo pays', pays);
+  }
+
 
 }

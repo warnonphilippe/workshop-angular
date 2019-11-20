@@ -4,10 +4,21 @@ import { PaysPageComponent } from './pays-page.component';
 import { PaysFormComponent } from './pays-form/pays-form.component';
 import { PaysListComponent } from './pays-list/pays-list.component';
 import { HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CivadisPrimengLibModule} from '@civadis/primeng-lib';
+import {CivadisPrimengLayoutModule, LayoutDependenciesModule} from '@civadis/primeng-layout';
+import {AdLibraryModule} from 'ad-library';
 
 @NgModule({
   imports: [
-    CommonModule, HttpClientModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CivadisPrimengLibModule,
+    CivadisPrimengLayoutModule,
+    AdLibraryModule,
+    LayoutDependenciesModule,
+    HttpClientModule
   ],
   declarations: [PaysPageComponent, PaysFormComponent, PaysListComponent]
 })

@@ -1,1 +1,37 @@
-<p>pays-form works!</p>
+<form (ngSubmit)="askSave()">
+
+  <div class="ui-g">
+
+    <div class="ui-g-12">
+
+      <p-card class="primary">
+
+        <div class="ui-g form-group">
+          <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label for="input">Code Iso2</label>
+            <input id="input" type="text" pInputText />
+          </div>
+
+          <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label for="input">Code Iso3</label>
+            <input id="input" type="text" pInputText />
+          </div>
+        </div>
+
+      </p-card>
+
+      <!-- Panel bouton de sauvegarde -->
+      <div style="padding-top:15px;">
+        <civa-floating-bar>
+          <button pButton type="button" icon="fas fa-download" class="ui-button-default civa-bar-btn-left"></button>
+          <button pButton type="button" icon="fas fa-upload" class="ui-button-default civa-bar-btn-left"></button>
+          <civa-button-save  class="civa-bar-btn civa-bar-btn-right" (save)="askSave();" [loading]="saveLoading" #saveButton></civa-button-save>
+          <button (click)="askBack()" pButton type="button" label="retour" icon="fas fa-chevron-left" class="ui-button-default civa-bar-btn civa-bar-btn-right"></button>
+        </civa-floating-bar>
+      </div>
+    </div>
+
+
+  </div>
+
+</form>
