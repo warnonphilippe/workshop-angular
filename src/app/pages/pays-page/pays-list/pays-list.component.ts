@@ -34,10 +34,13 @@ export class PaysListComponent implements OnInit {
     console.log('passe avant le retour de refreshPays car refreshPays est async');
   }
 
+  // retourne l'observable qui contient les pays, doit être binded avec | async dans l'écran
   refreshPays() {
     this.pays$ = this.paysService.findAll();
   }
 
+  // retourne les données de l'observable
+  // async / await
   async refreshPays2() {
     try {
       // await va attendre le résultat de l'Observable
@@ -46,6 +49,7 @@ export class PaysListComponent implements OnInit {
     }
   }
 
+  // retourne les données de l'observable
   refreshPays3() {
     this.paysService.findAll().subscribe(
       res => {
