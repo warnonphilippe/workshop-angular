@@ -15,4 +15,8 @@ export class PaysService {
   findAll(): Observable<Pays[]> {
     return this.http.get(this.path) as Observable<Pays[]>;
   }
+
+  findById(id: string): Observable<Pays> {
+    return this.http.get(this.path + '/' + id) as Observable<Pays>;
+  }
 }

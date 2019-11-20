@@ -16,7 +16,6 @@ export class PaysFormComponent implements OnInit {
 
   formGroup: FormGroup = null;
   id: string = null;
-  currentPays: Pays = {};
 
   @ViewChild('saveButton', {static: false}) saveButton: ButtonSaveComponent;
   saveLoading = false;
@@ -37,34 +36,57 @@ export class PaysFormComponent implements OnInit {
       [ { label: 'Modification du pays' } ] as MenuItem[]
     );
 
-    this.route.params.subscribe( params =>
-        // this.id = params.get('id')
-       // TODO = get pays by ID
-        this.currentPays = {codeIso2: 'BE', codeIso3: 'BEL'} as Pays
-    );
-
     this.initForm();
+
+    this.route.params.subscribe(params => {
+      const id: string = params['id']
+      if (id){
+        this.loadPays(id);
+      }
+    });
+
   }
 
   initForm() {
     this.formGroup = this.fb.group({
-      'codeIso2': [this.currentPays.codeIso2, Validators.compose([
+      'codeIso2': ['', Validators.compose([
         Validators.required,
         Validators.maxLength(2)
       ])],
-      'codeIso3': [this.currentPays.codeIso3, Validators.compose([
+      'codeIso3': ['', Validators.compose([
         Validators.required,
         Validators.maxLength(3)
       ])]
     });
   }
 
+  loadPays(id: string) {
+    this.paysService.findById(id).subscribe(
+      pays => {
+        this.formGroup.patchValue({
+          id: pays.id,
+          codeIso2: pays.codeIso2,
+          codeIso3: pays.codeIso3
+        });
+      }
+    );
+  }
+
+  private extractPays(): Pays {
+    return {
+      ...{} as Pays,
+      id: this.formGroup.get(['id']).value,
+      codeIso2: this.formGroup.get(['codeIso2']).value,
+      codeIso3: this.formGroup.get(['codeIso3']).value
+    };
+  }
+
   async askSave() {
     try {
       this.saveLoading = true;
+      console.warn(this.extractPays());
       // TODO implementer save dans paysService et l'appeler
-      // await this.paysService.save( /* myBean */ ).toPromise();
-      console.warn(this.formGroup.value);
+      // await this.paysService.save(this.extractPays()).toPromise();
       this.saveButton.toggleSuccess();
     } catch (ex) {
       console.warn(ex);
