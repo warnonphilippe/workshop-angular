@@ -1,0 +1,90 @@
+[
+    {
+        "type": "C",
+        "nom": "Dupont",
+        "prenom": "Jean",
+        "statut": "Médiation à l'amiable",
+        "niss": "82.15.10-080.91",
+        "phone": "0498/77.29.16",
+        "email": "d.jean@nmail.com",
+        "adresse": "Rue des Sarts 19 - 4800 Lambermont",
+        "conjoint": {
+            "nom": "Willy",
+            "prenom": "Annie",
+            "niss": "82.15.10-080.91"
+        },
+        "technique": {
+            "nom": "Bonduel",
+            "prenom": "Jacques",
+            "dossier": "10-10-2018",
+            "ref": "0542145",
+            "trajet": "15423564"
+        }
+    },
+    {
+        "type": "E",
+        "nom": "Demoulin",
+        "prenom": "Marcel",
+        "statut": "RCD",
+        "niss": "82.15.10-080.91",
+        "phone": "0498/77.29.16",
+        "email": "d.jean@nmail.com",
+        "adresse": "Rue des Sarts 19 - 4800 Lambermont",
+        "conjoint": {
+            "nom": "Chaumond",
+            "prenom": "Martine",
+            "niss": "82.15.10-080.91"
+        },
+        "technique": {
+            "nom": "Bonduel",
+            "prenom": "Jacques",
+            "dossier": "10-10-2018",
+            "ref": "0542145",
+            "trajet": "15423564"
+        }
+    },
+    {
+        "type": "S",
+        "nom": "Dupuis",
+        "prenom": "Carole",
+        "statut": "Guidance budgétaire",
+        "niss": "82.15.10-080.91",
+        "phone": "0498/77.29.16",
+        "email": "d.jean@nmail.com",
+        "adresse": "Rue des Sarts 19 - 4800 Lambermont",
+        "conjoint": {
+            "nom": "Cool",
+            "prenom": "John",
+            "niss": "82.15.10-080.91"
+        },
+        "technique": {
+            "nom": "Bonduel",
+            "prenom": "Jacques",
+            "dossier": "10-10-2018",
+            "ref": "0542145",
+            "trajet": "15423564"
+        }
+    },
+    {
+        "type": "I",
+        "nom": "Wisley",
+        "prenom": "Ronald",
+        "statut": "RCD + guidance budgétaire",
+        "niss": "82.15.10-080.91",
+        "phone": "0498/77.29.16",
+        "email": "d.jean@nmail.com",
+        "adresse": "Rue des Sarts 19 - 4800 Lambermont",
+        "conjoint": {
+            "nom": "Chaumond",
+            "prenom": "Martine",
+            "niss": "82.15.10-080.91"
+        },
+        "technique": {
+            "nom": "Bonduel",
+            "prenom": "Jacques",
+            "dossier": "10-10-2018",
+            "ref": "0542145",
+            "trajet": "15423564"
+        }
+    }
+]

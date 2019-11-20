@@ -1,0 +1,64 @@
+
+
+
+
+<div style="padding: 30px;padding-top: 0px;">
+
+  <h1>Que s'est-il passé ?</h1>
+  <div class="info">
+    Votre application a été générée avec angular/cli et notre plugin yeoman <strong>@civadis/generator-angular-layout</strong>
+    permettant d'intégrer le layout et les librairies Civadis.
+    Vous avez dès lors à disposition un projet angular opérationnel pour communiquer avec votre gateway JHipster.
+  </div>
+
+  <h1>Que faire maintenant ?</h1>
+  <div class="info">
+    Au boulot ! Pour éviter l'angoisse de la page blanche, ce projet ajoute un exemple de page liste/détail, avec un fake service REST.
+    Cet exemple est accessible via le point de menu "Page d'exemple".
+    Libre à vous de vous en inspirer pour créer vos propres écrans.
+    Référez-vous à notre référenciel d'ergonomie si vous souhaitez consulter un maximum d'exemple.
+    <strong>Inutile de vous préciser que cette page devra être écrasée par votre propre homepage applicative.</strong>
+  </div>
+  <h2>Exemple</h2>
+  <div class="info" style="margin-top: 10px;">
+    Chaque nouvelle rubrique de l'application nécessite une nouveau module dans le folder /src/app/pages/ma_rubrique-page.
+    <br> La rubrique "exemple-page" illustre exactement la façon d'organiser le code, voir : <strong>src/pages/exemple-page</strong>.
+    <br><br> Admettons qu'on souhaite générer une rubrique pour <strong>gérer un concept de facture</strong>, nous allons (au minimum) devoir générer les fichiers suivants :
+    <ul>
+      <li>/src/app/shared/model/<strong>facture.ts</strong> : une interface typescript définissant le concept de facture</li>
+      <li>/src/app/pages/<strong>facture-page/facture-page.module.ts</strong> : le module regroupant tous les élements et dépendances nécessaires à cette rubrique</li>
+      <li>/src/app/pages/<strong>facture-page/facture-list/facture-list.component.(ts + scss + html)</strong> : le composant permettant d'afficher la liste des factures</li>
+      <li>/src/app/pages/<strong>facture-page/facture-form/facture-form.component.(ts + scss + html)</strong> : le composant permettant de modifier/ajouter le détail d'une facture (le formulaire d'encodage)</li>
+      <li>/src/app/pages/<strong>facture-page/facture-page.routes.ts</strong> : la définition des url de navigation vers les composants</li>
+      <li>/src/app/pages/<strong>facture-page/facture.service.ts</strong> : le service permettant d'accéder aux ressources REST du gateway</li>
+    </ul>
+    NB : Ces fichiers peuvent être générés avec les commandes angular/cli :
+    <ul>
+      <li>Générer le module : aller dans <strong>src/main/app/pages/</strong> et jouer <strong>ng g m facture-page</strong></li>
+      <li>Générer le composant form : aller dans <strong>src/main/app/pages/facture-page/</strong> et jouer <strong>ng g c facture-form</strong></li>
+      <li>Générer le composant list : aller dans <strong>src/main/app/pages/facture-page/</strong> et jouer <strong>ng g c facture-list</strong></li>
+      <li>Générer le service : aller dans <strong>src/main/app/pages/</strong> et jouer <strong>ng g s facture</strong></li>
+      <li>Générer l'interface : aller dans <strong>src/main/app/shared/model/</strong> et jouer <strong>ng g i facture</strong></li>
+    </ul>
+
+    Il faudra aussi modifier certains fichiers existants :
+    <ul>
+      <li>Référencer facture-page.routes.ts dans le routage angular <strong>app-routing.module.ts</strong></li>
+      <li>Ajouter le nouveau point de menu facture dans <strong>menu-left.component.ts</strong></li>
+      <li>Ajouter le nouveau module FacturePageModule dans PagesModule</li>
+    </ul>
+  </div>
+
+  <h1>Ressources</h1>
+  <div class="info">
+    <p>Si trouverez davantage d'information en consultant les liens suivants :</p>
+    <ul>
+      <li><a href="http://vsldockdev001.adehisnet.be/#/auth/dashboard">Notre référenciel d'ergonomie</a></li>
+      <li><a href="https://www.primefaces.org/primeng/#/">Composants de formulaire PrimeNG</a></li>
+    </ul>
+  </div>
+
+   
+
+</div>
+

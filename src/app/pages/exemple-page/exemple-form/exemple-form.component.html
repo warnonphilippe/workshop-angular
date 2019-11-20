@@ -1,0 +1,54 @@
+<form (ngSubmit)="askSave()">
+
+    <div class="ui-g">
+
+
+        <div class="ui-g-12">
+            <div class="callout callout-default">
+                <h2><i class="fas fa-info-circle"></i>&nbsp;&nbsp;Message d'info</h2>
+                <p>Ceci est un exemple de paragraphe qu'il est possible de mettre en début de formulaire afin d'expliquer comment l'encoder.</p>
+            </div>
+        </div>
+
+        <!-- Onglets -->
+        <div class="ui-g-12" style="padding:0px;">
+            <civa-tab [value]="0" [(ngValue)]="tabIndex" name="tab-form" width="6">
+                <i class="fas fa-home"></i>&nbsp;&nbsp;Informations générales
+            </civa-tab>
+            <civa-tab [value]="1" [(ngValue)]="tabIndex" name="tab-form" width="6">
+                <i class="fab fa-dropbox"></i>&nbsp;&nbsp;Autres
+            </civa-tab>
+        </div>
+
+        <div class="ui-g-12 ui-lg-9">
+
+            <!-- Panel pour onglet 1 -->
+            <p-card class="primary" *ngIf="tabIndex === 0">
+                <app-exemple-form-infosgenerales></app-exemple-form-infosgenerales>
+            </p-card>
+            <!-- Panel pour onglet 2 -->
+            <p-card class="primary" *ngIf="tabIndex === 1">
+                <app-exemple-form-autres></app-exemple-form-autres>
+            </p-card>
+
+            <!-- Panel bouton de sauvegarde -->
+            <div style="padding-top:15px;">
+                <civa-floating-bar>
+                    <button pButton type="button" icon="fas fa-download" class="ui-button-default civa-bar-btn-left"></button>
+                    <button pButton type="button" icon="fas fa-upload" class="ui-button-default civa-bar-btn-left"></button>
+                    <civa-button-save  class="civa-bar-btn civa-bar-btn-right" (save)="askSave();" [loading]="saveLoading" #saveButton></civa-button-save>
+                    <button (click)="askBack()" pButton type="button" label="retour" icon="fas fa-chevron-left" class="ui-button-default civa-bar-btn civa-bar-btn-right"></button>
+                </civa-floating-bar>
+            </div>
+        </div>
+
+        <!-- Panel infos annexes -->
+        <div class="ui-g-12 ui-lg-3 dashboard">
+            <app-exemple-form-annexes></app-exemple-form-annexes>
+        </div>
+
+
+
+    </div>
+
+    </form>

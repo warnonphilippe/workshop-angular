@@ -1,0 +1,172 @@
+
+
+
+
+        <div class="ui-g">
+
+
+            <div class="ui-g-12">
+                <div class="callout callout-default">
+                    <h2><i class="fas fa-info-circle"></i>&nbsp;&nbsp;Message d'info</h2>
+                    <p>Ceci est un exemple de paragraphe qu'il est possible de mettre en début de formulaire afin d'expliquer comment l'encoder.</p>
+                </div>
+            </div>
+
+            <div class="ui-g-12 ui-md-12 ui-lg-6 ui-xl-8">
+                <div class="ui-fluid">
+
+                    <civa-input-search [(ngModel)]="search" name="search" [criterias]="criterias" placeholder="Rechercher">
+                    </civa-input-search>
+
+                </div>
+            </div>
+
+            <div class="ui-g-6 ui-md-6 ui-lg-3 ui-xl-2 ui-fluid">
+                <civa-button-list label="actions" icon="fas fa-cogs" [civaPopupTarget]="popupButtonAction">
+                    <civa-notification-popup #popupButtonAction>
+                            <ul>
+                                <li class="info-elem" style="padding-right:100px;">
+                                    <i class="fas fa-euro-sign"></i>Générer paiements
+                                    <div class="info-elem-btn-group">
+                                        <button>TOUS</button>
+                                        <button>LIST</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-university"></i>Exécuter paiements
+                                    <span class="popup-badge popup-badge-success">4</span>
+                                </li>
+                                <li><i class="far fa-file-excel"></i>Exporter en fichier Excel</li>
+                            </ul>
+                        </civa-notification-popup>
+                </civa-button-list>
+            </div>
+
+            <div class="ui-g-6 ui-md-6 ui-lg-3 ui-xl-2 ui-fluid">
+                <button
+                (click)="askAdd($event)"
+                type="button"
+                class="ui-corner-all ui-button ui-button-text-only civa-bar-btn-right">
+                    <span class="ui-button-text ui-clickable">
+                        <i class="fas fa-plus"></i>&nbsp;Ajouter
+                    </span>
+                </button>
+            </div>
+
+            <div class="ui-g-12 ui-fluid" style="padding: 0;padding-bottom: 20px;">
+
+                <div *ngFor="let criteria of criterias">
+
+                    <div class="ui-g form-group">
+
+                        <div class="ui-g-12 ui-fluid" *ngIf="criteria.selected && criteria.label === 'nom'">
+                            <label for="input">Nom</label>
+                            <input id="input" type="text" pInputText autofocus />
+                        </div>
+
+                        <div class="ui-g-12" style="padding: 0" *ngIf="criteria.selected && criteria.label === 'adresse'">
+                            <div class="ui-g-12 ui-md-12 ui-lg-6 ui-fluid">
+                                <label for="input">Rue</label>
+                                <input id="input" type="text" pInputText autofocus />
+                            </div>
+                            <div class="ui-g-12 ui-md-4 ui-lg-2 ui-fluid">
+                                <label for="input">No</label>
+                                <input id="input" type="text" pInputText autofocus />
+                            </div>
+                            <div class="ui-g-6 ui-md-4 ui-lg-2 ui-fluid">
+                                <label for="input">Code postal</label>
+                                <input id="input" type="text" pInputText autofocus />
+                            </div>
+                            <div class="ui-g-6 ui-md-4 ui-lg-2 ui-fluid">
+                                <label for="input">Localité</label>
+                                <input id="input" type="text" pInputText autofocus />
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div>
+
+                <div class="civa-dataview-sortbar">
+                    <i class="fas fa-sort-amount-down" *ngIf="ascendingSort"></i>
+                    <i class="fas fa-sort-amount-up" *ngIf="!ascendingSort"></i>&nbsp;&nbsp;
+                    <a href="javascript:void(0)" (click)="sort('nom'); ascendingSort = !ascendingSort">
+                        <i class="fas fa-caret-down" *ngIf="currentSort === 'nom' && !ascendingSort"></i>
+                        <i class="fas fa-caret-up" *ngIf="currentSort === 'nom' && ascendingSort"></i>
+                        Nom
+                    </a>,&nbsp;
+                    <a href="javascript:void(0)" (click)="sort('prenom'); ascendingSort = !ascendingSort">
+                        <i class="fas fa-caret-down" *ngIf="currentSort === 'prenom' && !ascendingSort"></i>
+                        <i class="fas fa-caret-up" *ngIf="currentSort === 'prenom' && ascendingSort"></i>
+                        Prénom
+                    </a>
+                </div>
+
+                <!--
+                    Explication des éléments du visuel .civa-dataview CSS pour le pDataView PrimeNG :
+
+                    .civa-dataview-item     :   Représentation visuelle "CIVADIS" d'un bean dans pDataView PrimeNG, c'est l'élément racine
+                    .civa-dataview-row      :   L'élément à afficher peut être représenté sur plusieurs lignes, grâce à la classe .civa-dataview-row
+                    .civa-dataview-title    :   L'élément principal à afficher ce sont la ou les valeurs les plus représentatives
+                    .civa-dataview-group    :   Regrouper des éléments de même famille dans des petites groupes, ils seront dans une bulle grisée
+                    .civa-bg-{color}        :   Forcer le background d'un élément, très utile pour les civa-dataview-group
+                    .civa-dataview-actions  :   La zone de droite, contenant boutons d'action relatifs à l'item
+                -->
+
+                <p-dataView [value]="datas" [paginator]="true" [rows]="10" paginatorPosition="bottom" class="civa-dataview">
+
+                    <ng-template let-item pTemplate="listItem">
+
+                        <div class="civa-dataview-item" (click)="askEdit($event, item)">
+
+                                <div class="civa-dataview-picture">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+
+                                <div class="civa-dataview-data">
+
+                                    <div class="civa-dataview-row">
+                                        <span class="civa-dataview-title">{{ item.nom | uppercase }}&nbsp;{{ item.prenom }}</span>
+                                        <span class="civa-dataview-group civa-bg-orange">{{ item.statut }}</span>
+                                    </div>
+                                    <div class="civa-dataview-row">
+                                        <span><i class="fas fa-id-card"></i>&nbsp;{{ item.niss }}</span>
+                                        <span><i class="fas fa-phone"></i>&nbsp;{{ item.phone }}</span>
+                                        <span><i class="fas far fa-envelope"></i>&nbsp;{{ item.email }}</span>
+                                        <span><i class="fas fa-home"></i>&nbsp;{{ item.adresse }}</span>
+                                    </div>
+                                    <div class="civa-dataview-row">
+                                        <span class="civa-dataview-group">
+                                            <span><i class="fas fa-heart"></i>&nbsp;{{ item.conjoint.nom | uppercase }}&nbsp;{{ item.conjoint.prenom }}</span>
+                                            <span><i class="fas fa-id-card"></i>&nbsp;{{ item.conjoint.niss }}</span>
+                                        </span>
+                                        <span class="civa-dataview-group">
+                                            <span><i class="fas fa-wrench"></i>&nbsp;{{ item.technique.nom | uppercase }}&nbsp;{{ item.technique.prenom }}</span>
+                                            <span><i class="fas fa-folder-open"></i>&nbsp;{{ item.technique.dossier }}</span>
+                                            <span><strong>Ref.</strong>&nbsp;&nbsp;{{ item.technique.ref }}</span>
+                                            <span><strong>NoTrajet.</strong>&nbsp;&nbsp;{{ item.technique.trajet }}</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="civa-dataview-actions">
+                                        <ad-button-slide (click)="askEdit($event, item)" icon="fas fa-pencil-alt" label="Modifier" background="#3984b8" backgroundOver="#2d668f"></ad-button-slide>
+                                        <ad-button-slide (click)="askDelete($event, item)" icon="fas fa-trash-alt" label="Supprimer" background="#c3615f" backgroundOver="#ca4e4c"></ad-button-slide>
+                                    </div>
+
+                                </div>
+
+                        </div>
+
+                    </ng-template>
+
+                </p-dataView>
+
+            </div>
+        </div>
+
+
+

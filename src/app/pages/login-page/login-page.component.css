@@ -1,0 +1,251 @@
+
+.login-panel {
+  max-width: 600px;
+  margin:auto;
+  background:white;
+  margin-top: 125px;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  color: #757575;
+}
+
+.login-panel .logo-container {
+  padding: 50px 50px 25px 50px;
+}
+
+.logo-container .login-icon {
+  float: right;
+  height: 50px;
+}
+
+.login-body .login-panel .logo-container .logo {
+  height: 50px;
+}
+
+.login-body .login-panel .logo-container h2 {
+  color: #7d8286;
+  font-size: 16px;
+  font-weight: 100;
+  margin-top: 12px;
+  margin-bottom: 0;
+  letter-spacing: 0.5px;
+}
+
+.login-body .login-panel a {
+  color: #757575;
+  -moz-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  font-size: 0.7em;
+  text-decoration: none;
+}
+
+.login-body .login-panel a:hover {
+  color: #3984b8;
+  -moz-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  font-size: 0.7em;
+  text-decoration: none;
+}
+
+button {
+  background-color: #3984b8;
+  border: 1px solid transparent;
+  color:white;
+  border-radius:2px;
+  font-size: 13px;
+  -moz-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background-color: #3376a5;
+}
+
+.login-panel input {
+  padding: .985em;
+  background: #ffffff;
+  padding: 0.385em;
+  border: 1px solid #bdc3c9;
+  -moz-transition: border-color 0.3s;
+  -o-transition: border-color 0.3s;
+  -webkit-transition: border-color 0.3s;
+  transition: border-color 0.3s;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 13px;
+  color: #757575;
+}
+
+.login-panel input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(181,181,181);
+  opacity: 1; /* Firefox */
+}
+
+.login-panel input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgb(181,181,181);
+}
+
+.login-panel input::-ms-input-placeholder { /* Microsoft Edge */
+  color: rgb(181,181,181);
+}
+
+.login-panel input:focus {
+  border-color: #3984b8;
+}
+
+div.login-body {
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+}
+.login-body .login-panel .input-wrapper input {
+  padding: .985em;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.login-body .ui-button.ui-button-text-only .ui-button-text {
+  padding: .985em .6em;
+}
+
+.login-body .login-panel .input-wrapper .fas {
+  position: absolute;
+  top: 14px;
+  right: 12px;
+  font-size:1em;
+}
+
+.login-bg {
+  position:fixed;
+  top: 0;
+  left: 0;
+  background: url('/assets/layout/images/civadis/bg-login.jpg');
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.login-body {
+  height: auto;
+}
+
+.form-login {
+  padding-left:100px;
+  padding-right:100px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-login input {
+  width:100%;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+@media (max-width: 500px) {
+  .form-login {
+      padding-left:50px;
+      padding-right:50px;
+  }
+}
+
+.form-login > * {
+  margin-top: 30px;
+}
+.form-login > *:first-child {
+  margin-top: 0px;
+}
+
+
+.login-body .login-panel .logo-container {
+  border-bottom: none;
+  margin-bottom: 0px;
+}
+
+.login-panel.shadow-paper {
+  height: 22px;
+  width: 100%;
+  max-width:600px;
+  background: url('/assets/layout/images/civadis/shadow.png') top -4px center/contain no-repeat;
+  -moz-opacity: .6;
+  opacity: .6;
+  filter: alpha(opacity=60);
+}
+
+.login-panel.shadow-paper {
+  margin-top: 0px;
+  background-color:transparent;
+}
+
+.logo-container h2 {
+  text-transform: uppercase;
+}
+
+.ui-civadis-gradiant {
+  height:6px;
+  width:100%;
+  margin-bottom: 18px;
+  background:#eee;
+}
+
+.ui-civadis-gradiant>div {
+  width:25%;
+  height:100%;
+  display:block;
+  float:left;
+}
+
+.ui-civadis-gradiant>div:nth-child(1) {
+  background:#308FC2;
+  animation-delay: .2s;
+}
+.ui-civadis-gradiant>div:nth-child(2) {
+  background:#52B0D4;
+  animation-delay: .4s;
+}
+.ui-civadis-gradiant>div:nth-child(3) {
+  background:#D94745;
+  animation-delay: .6s;
+}
+.ui-civadis-gradiant>div:nth-child(4) {
+  background:#A1ADB4;
+  animation-delay: .8s;
+}
+
+.btn-connexion {
+  background-color: #3984b8;
+  border: 1px solid transparent;
+  color:white;
+  border-radius:2px;
+  font-size: 13px;
+  padding: 13px;
+  -moz-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  width: 100%;
+  outline: none;
+}
+
+.btn-connexion:hover {
+  background-color: #3376a5;
+  width: 100%;
+}

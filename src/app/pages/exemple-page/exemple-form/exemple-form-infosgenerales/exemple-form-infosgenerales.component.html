@@ -1,0 +1,77 @@
+<div class="ui-g form-group">
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label for="input">Date de livraison souhaitée</label>
+        <p-calendar [showIcon]="true" autofocus></p-calendar>
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label for="demandeur">Demandeur</label>
+        <div class="ui-inputgroup">
+            <input id="demandeur" type="text" pInputText placeholder="Cliquer sur l'icone pour rechercher">
+            <button pButton type="button" icon="fas fa-search"></button>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label for="input">Référence</label>
+        <input id="input" type="text" pInputText />
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label for="input">Libellé</label>
+        <input id="input" type="text" pInputText />
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label for="fournisseur">Fournisseur</label>
+        <div class="ui-inputgroup">
+            <input id="fournisseur" type="text" pInputText placeholder="Cliquer sur l'icone pour rechercher">
+            <button pButton type="button" icon="fas fa-search"></button>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label for="artbudget">
+            Article budgetaire&nbsp;
+            <span class="civa-tag-checkox">
+                <p-checkbox name="articleunique" label="unique"></p-checkbox>
+            </span>
+        </label>
+        <div class="ui-inputgroup">
+            <input id="artbudget" type="text" pInputText placeholder="Cliquer sur l'icone pour rechercher">
+            <button pButton type="button" icon="fas fa-search"></button>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label for="mtva">Montant TVA</label>
+        <div class="ui-inputgroup">
+            <input placeholder="Cliquer sur l'icone pour rechercher" id="mtva" type="number" pInputText />
+            <span class="ui-inputgroup-addon"><i class="fas fa-euro-sign"></i></span>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label for="input">
+            Type de marché&nbsp;
+            <span class="civa-tag-checkox">
+                <p-checkbox name="nouveaumarche" label="nouveau"></p-checkbox>
+            </span>
+        </label>
+        <div class="ui-inputgroup" >
+            <p-dropdown class="dropdown-max-width" [autoWidth]="false" [options]="[]"></p-dropdown>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Urgent</label>
+        <ad-button-switch [theme]="'switch'" id="urgent"></ad-button-switch>
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Forcer sécurité & hygiène</label>
+        <ad-button-switch [theme]="'switch'" id="hygiene"></ad-button-switch>
+    </div>
+
+</div>
