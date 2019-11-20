@@ -69,7 +69,7 @@ export class PaysListComponent implements OnInit {
   }
 
   askEdit(event: MouseEvent, pays: Pays) {
-    this.router.navigate(['/pays-form']);
+    this.router.navigate(['/pays-form'], pays.id);
   }
 
   askAdd(event: MouseEvent) {
