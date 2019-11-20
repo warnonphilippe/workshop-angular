@@ -1,4 +1,4 @@
-<form (ngSubmit)="askSave()">
+<form (ngSubmit)="askSave()" [formGroup]="formGroup">
 
   <div class="ui-g">
 
@@ -8,13 +8,13 @@
 
         <div class="ui-g form-group">
           <div class="ui-g-12 ui-md-6 ui-fluid">
-            <label for="input">Code Iso2</label>
-            <input id="input" type="text" pInputText />
+            <label for="codeIso2">Code Iso2</label>
+            <input id="codeIso2" type="text" formControlName="codeIso2" pInputText />
           </div>
 
           <div class="ui-g-12 ui-md-6 ui-fluid">
-            <label for="input">Code Iso3</label>
-            <input id="input" type="text" pInputText />
+            <label for="codeIso3">Code Iso3</label>
+            <input id="codeIso3" type="text" formControlName="codeIso3" pInputText />
           </div>
         </div>
 
@@ -25,7 +25,7 @@
         <civa-floating-bar>
           <button pButton type="button" icon="fas fa-download" class="ui-button-default civa-bar-btn-left"></button>
           <button pButton type="button" icon="fas fa-upload" class="ui-button-default civa-bar-btn-left"></button>
-          <civa-button-save  class="civa-bar-btn civa-bar-btn-right" (save)="askSave();" [loading]="saveLoading" #saveButton></civa-button-save>
+          <civa-button-save  class="civa-bar-btn civa-bar-btn-right" (save)="askSave();" [disabled]=" !formGroup.valid" [loading]="saveLoading" #saveButton></civa-button-save>
           <button (click)="askBack()" pButton type="button" label="retour" icon="fas fa-chevron-left" class="ui-button-default civa-bar-btn civa-bar-btn-right"></button>
         </civa-floating-bar>
       </div>
