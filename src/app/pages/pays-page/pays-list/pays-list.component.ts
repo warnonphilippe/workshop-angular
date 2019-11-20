@@ -4,6 +4,7 @@ import {PageHeaderService} from '@civadis/primeng-layout';
 import {PaysService} from '../pays.service';
 import {Router} from '@angular/router';
 import {Pays} from '../../../shared/models/pays';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-pays-list',
@@ -17,6 +18,7 @@ export class PaysListComponent implements OnInit {
               public router: Router) { }
 
   datas: Pays[];
+  pays$: Observable<Pays[]>;
   currentSort = '';
   ascendingSort = true;
 
@@ -32,7 +34,11 @@ export class PaysListComponent implements OnInit {
     console.log('passe avant le retour de refreshPays car refreshPays est async');
   }
 
-  async refreshPays() {
+  refreshPays() {
+    this.pays$ = this.paysService.findAll();
+  }
+
+  async refreshPays2() {
     try {
       // await va attendre le résultat de l'Observable
       this.datas = await this.paysService.findAll().toPromise();
@@ -40,7 +46,7 @@ export class PaysListComponent implements OnInit {
     }
   }
 
-  refreshPays2() {
+  refreshPays3() {
     this.paysService.findAll().subscribe(
       res => {
         this.datas = res;

@@ -43,7 +43,7 @@
         .civa-dataview-actions  :   La zone de droite, contenant boutons d'action relatifs à l'item
     -->
 
-    <p-dataView [value]="datas" [paginator]="true" [rows]="10" paginatorPosition="bottom" class="civa-dataview">
+    <p-dataView [value]="pays$ | async" [paginator]="true" [rows]="10" paginatorPosition="bottom" class="civa-dataview">
 
       <ng-template let-item pTemplate="listItem">
 
